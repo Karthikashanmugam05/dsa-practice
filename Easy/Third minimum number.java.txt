@@ -1,0 +1,25 @@
+#third largest element in array 414
+class Solution {
+    public int thirdMax(int[] nums) {
+        PriorityQueue<Integer>minHeap=new PriorityQueue();
+        Set<Integer>hs=new HashSet<>();
+
+        for (int num : nums) {
+            if (hs.contains(num))continue;
+            hs.add(num);
+            minHeap.offer(num);
+        
+        if (minHeap.size() > 3) {
+        int removed = minHeap.poll();  
+        hs.remove(removed);  
+        }          
+    }
+        if (minHeap.size() < 3) {
+            while (minHeap.size() > 1) {
+                minHeap.poll();
+            }
+        }
+         return minHeap.poll();
+        
+    }
+}
