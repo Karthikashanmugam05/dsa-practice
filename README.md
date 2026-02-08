@@ -37,7 +37,4 @@ I solve and upload new problems regularly as part of my growth towards becoming 
 
 ---
 
-## 📌 Goals
-- 🔲 Solve 150+ questions by September 2025
-- 🔲 Build a strong base in DSA for interviews
-- 🔲 Participate in LeetCode Weekly Contests
+
