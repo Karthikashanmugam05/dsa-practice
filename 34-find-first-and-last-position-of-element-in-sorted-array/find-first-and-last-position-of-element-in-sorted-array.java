@@ -1,22 +1,33 @@
 class Solution {
     public int[] searchRange(int[] nums, int target) {
-        int []a=new int[2];
-        a[0]=-1;
-        a[1]=-1;
-        for(int i=0;i<nums.length;i++){
-            if(target==nums[i]){
-                a[1]=i;
-            }
+        int left = lb(nums, target);
+        if (left == -1 || nums[left] != target) {
+            return new int[]{-1, -1};
         }
-        for(int i=nums.length-1;i>=0;i--)
-        {
-            if(target==nums[i]){
-            
-                a[0]=i;
-            }
-            
+        int right = ub(nums, target);
+        return new int[]{left, right};
+    }
+
+    private int lb(int[] nums, int target) {
+        int lo = 0, hi = nums.length;
+
+        while (lo < hi) {
+            int mid = lo + (hi - lo) / 2;
+            if (nums[mid] < target) lo = mid + 1;
+            else hi = mid;
         }
-        return a;
-        
+
+        return lo == nums.length ? -1 : lo;
+    }
+
+    private int ub(int[] nums, int target) {
+        int lo = 0, hi = nums.length;
+
+        while (lo < hi) {
+            int mid = lo + (hi - lo) / 2;
+            if (nums[mid] <= target) lo = mid + 1;
+            else hi = mid;
+        }
+        return lo - 1;
     }
 }
